@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Surprise</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffeef2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+            width: 380px;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #display-img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            font-size: 28px;
+            margin: 0 0 25px 0;
+            min-height: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Keeps them beside each other at the start */
+            width: 100%;
+            height: 50px;
+            position: relative;
+        }
+
+        button {
+            padding: 12px 28px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #f0f0f0;
+            color: #666;
+            position: relative; /* Normal flow at the start */
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img id="display-img" src="quby-flower.gif" alt="Cute Sticker">
+        <h1 id="question">Farhuu Will you be my Valentine?</h1>
+
+        <div class="buttons" id="button-group">
+            <button id="yesBtn" onclick="celebrate()">Yes</button>
+            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            
+            // Switch to fixed to jump anywhere on screen
+            noBtn.style.position = 'fixed';
+            
+            // Calculate random spots
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        function celebrate() {
+            const img = document.getElementById('display-img');
+            const question = document.getElementById('question');
+            const buttons = document.getElementById('button-group');
+
+            // 1. Change the image to the second one
+            // Replace 'bears-love.gif' with your actual second filename
+            img.src = "milk-and-mocha.gif"; 
+            
+            // 2. Change the text
+            question.innerHTML = "Hehe I knew it! ❤️";
+
+            // 3. Hide the buttons
+            buttons.classList.add('hidden');
+            
+            // 4. Change background color for extra effect
+            document.body.style.backgroundColor = "#ffb3c1";
+        }
+    </script>
+</body>
+</html>
